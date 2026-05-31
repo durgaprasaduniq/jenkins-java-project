@@ -6,7 +6,7 @@ metadata:
     env: app
     key: version
 spec:
-  replicas: 0
+  replicas: 5
   selector:
     matchLabels:
       env: app
