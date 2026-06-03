@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: service-deploy
-          image: durgaprasaduniq/project:self
+          image: durgaprasaduniq/practice:job
           ports:
             - containerPort: 8080
