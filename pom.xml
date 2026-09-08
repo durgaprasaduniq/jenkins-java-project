@@ -1,79 +1,135 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
-    
+
+    <!-- Project Details -->
     <groupId>in.RAHAM</groupId>
     <artifactId>NETFLIX</artifactId>
     <packaging>war</packaging>
     <version>1.2.2</version>
+
     <name>Java Home myweb</name>
     <url>http://maven.apache.org</url>
-    
+
+
+    <!-- Properties -->
     <properties>
-        <!-- Specify Java version -->
+
+        <!-- Java Version -->
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+
+        <!-- Docker Image Prefix -->
         <docker.image.prefix>kammana</docker.image.prefix>
-    </properties>    
-    
+
+        <!-- SonarQube Configuration -->
+        <sonar.projectKey>NETFLIX</sonar.projectKey>
+        <sonar.projectName>NETFLIX</sonar.projectName>
+        <sonar.projectVersion>1.2.2</sonar.projectVersion>
+
+        <!-- Source and Test Paths -->
+        <sonar.sources>src/main/java</sonar.sources>
+        <sonar.tests>src/test/java</sonar.tests>
+
+        <!-- Source Encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    </properties>
+
+
+    <!-- Dependencies -->
     <dependencies>
+
+        <!-- Oracle Bedrock -->
         <dependency>
             <groupId>com.oracle.bedrock</groupId>
             <artifactId>bedrock-runtime-maven</artifactId>
             <version>5.1.2</version>
         </dependency>
-        
+
+        <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
-    
+
+
+    <!-- Nexus Repository Configuration -->
     <distributionManagement>
+
+        <!-- Snapshot Repository -->
         <snapshotRepository>
             <id>nexusRepo</id>
-            <url>http://13.233.230.166:8081/repository/maven-snapshots/</url>
+            <url>
+                http://13.233.230.166:8081/repository/maven-snapshots/
+            </url>
         </snapshotRepository>
-        
+
+        <!-- Release Repository -->
         <repository>
             <id>nexusRepo</id>
-            <url>http://13.233.230.166:8081/repository/maven-releases/</url>
+            <url>
+                http://13.233.230.166:8081/repository/maven-releases/
+            </url>
         </repository>
+
     </distributionManagement>
-    
+
+
+    <!-- Plugin Repositories -->
     <pluginRepositories>
-        <pluginRepository>    
-            <id>maven1</id>
-            <name>Maven.org</name>
-            <url>http://repo1.maven.org/maven2</url>
+
+        <pluginRepository>
+            <id>maven-central</id>
+            <name>Maven Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
         </pluginRepository>
+
     </pluginRepositories>
 
+
+    <!-- Build Configuration -->
     <build>
+
         <plugins>
-            <!-- Updated Maven Compiler Plugin -->
+
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
+
                 <configuration>
-                    <!-- Use Java 11 for source and target -->
                     <source>11</source>
                     <target>11</target>
                 </configuration>
             </plugin>
 
-            <!-- Updated Maven War Plugin -->
+
+            <!-- Maven WAR Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version> <!-- Updated version -->
-                <configuration>
-                    <!-- You can add custom configurations if needed -->
-                </configuration>
+                <version>3.3.1</version>
             </plugin>
+
+
+            <!-- SonarQube Maven Plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.10.0.2594</version>
+            </plugin>
+
         </plugins>
+
     </build>
+
 </project>
