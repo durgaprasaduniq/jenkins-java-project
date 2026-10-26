@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: service-deploy
-          image: durgaprasaduniq/practice:job
+          image: durgaprasaduniq/netflix:v2
           ports:
             - containerPort: 8080
